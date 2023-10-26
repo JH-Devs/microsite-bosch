@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vestavné trouby Serie I 8</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+		}
+		body{
+			min-height:100vh;
+		}
+		.container-header{
+			width:100%;
+			height:250px;
+			padding-left:80px;
+			padding-right:80px;
+		}
+		ul{
+			list-style:none;
+		}
+
+		.colorfull-link {
+			width:100%;
+			content:"";
+			background: url("https://www.bosch-home.com/store/resources/577a43f1da9c961d43fa0e5f898bb7309cdac8d4/mbmd/a01-rebrush/img/shape_horizontal.svg");
+			position:absolute;
+			left:0;
+			right:0;
+			height:6px;
+		}
+		.header{
+			width:100%;
+			height:197px;
+			display:flex;
+			justify-content: space-between;
+			position:relative;
+		}
+		.col1{
+			width:70%;
+		}
+		.col1 .logo{
+			height:50px;
+			width:100%;
+			
+		}
+		.col1 .logo img{
+			width:120px;
+			height:35px;
+			margin-top:19px;
+		}
+		.col2{
+			width:30%;
+		}
+		.col2 span{
+			position:absolute;
+			top:0;
+			right:0;
+			margin-top:50px;
+			font-size:18px;
+			font-weight:bold;
+			margin-right:19px
+		}
+		.menu{
+			margin-top:-90px;
+			height:53px;
+			font-size:16px;
+			display:flex;
+			justify-content:space-between;
+			align-items:center;
+			position:sticky;
+		}
+		.menu .nav-links ul{
+			list-style:none;
+			display:flex;
+			justify-content:space-between;
+			align-items:center;
+			width:730px;
+		}
+		.menu .nav-links ul li{
+			margin-right:50px;
+			font-size:16px;
+		}
+		.menu .nav-links ul li a{
+			text-decoration:none;
+			color:#2d3436;
+			transition: 0.5s;
+			cursor:pointer;
+		}
+		.menu .nav-links ul li a:hover{
+			text-decoration: underline;
+			color:#74b9ff;
+		}
+		.submenu {
+			margin-top:25px;
+			background:lightgray;
+			padding:10px;
+			position: absolute;
+			top:0;
+			left:0;
+			right:0;
+			margin-top:180px;
+
+		}
+		.submenu ul{
+			display:flex;
+			justify-content: space-between;
+			align-items:center;
+		}
+		.submenu ul li a{
+			font-size: 14px;
+			color:#2d3436;
+		}
+		.product {
+			padding-left:80px;
+			padding-right:80px;
+			min-height:100vh;
+		}
+		.product .web-map ul{
+			width:250px;
+			display:flex;
+			justify-content: space-between;
+			align-items:center;
+		}
+		.product .web-map ul li{
+			font-size:14px;
+		}
+		.product .product-detail h1{
+			margin-top:60px;
+			font-size:48px;
+		}
+		.product .product-detail .feedback-btn{
+			transform: rotate(270deg);
+			font-size:16px;
+			padding:20px;
+			background:white;
+			border: 1px solid #57a9fc;
+			color:#57a9fc;
+			font-weight:400;
+			position:absolute;
+			top:0;
+			right:0;
+			margin-top:320px;
+			margin-right:-45px;
+			position:fixed;
+			z-index:1;
+		}
+		.product .banner-video{
+			position: absolute;
+			top:0;
+			left:0;
+			right:0;
+			margin-top:500px;
+		}
+		.product .product-text{
+			width:100%;
+			padding:20px;
+		}
+		.product .product-text h2{
+			margin-top:500px;
+			font-size:40px;
+			margin-bottom:40px;
+		}
+		.product .product-text p{
+			display:block;
+			font-size:16px;
+			line-height:30px;
+		}
+		.row{
+			padding-left:80px;
+			padding-right:80px;
+			margin-top:50px;
+			width:100%;
+			height:auto;
+			display:flex;
+			justify-content:space-between;
+		}
+		.col3{
+			width:50%;
+			padding:20px;
+			margin-bottom:50px;
+		}
+		.col4{
+			width:50%;
+			padding:20px;
+			margin-bottom:50px;
+		}
+		.col3 .col3-text{
+			display:flex;
+			flex-direction:column;
+			justify-content:center;
+		}
+		.col3 .col3-text h2{
+			font-size:40px;
+			margin-bottom:25px;
+			font-weight:600;
+		}
+		.col3 .col3-text span{
+			font-size:20px;
+		}
+		.col3 .col3-text p{
+			font-size:16px;
+			line-height:30px;
+			display:block;
+			margin-top:25px;
+			margin-bottom:25px;
+
+		}
+		.col3 .col3-text a{
+			color:#57a9fc;
+			text-decoration:none;
+			font-size:16px;
+			
+		}
+		.col3 .col3-text a img{
+			color:#57a9fc;
+			margin-right:10px;
+		}
+		.col4 .img-col4{
+			width: 680px;
+			height:382px;
+			position: relative;
+			padding-right:80px;
+		}
+		.col4 .img-col4 img{
+			width:100%;
+		}
+		.col4 .sub-img{
+    	display: flex;
+    	justify-content: space-between;
+		align-items:center;
+		margin-left:120px;
+		margin-right:120px;
+		}
+		.col4 .sub-img img{
+			width:99px;
+			height:55px;
+			border:1px solid gray;
+			margin-top:20px;
+		}
+		.col4 .img-col4 .chevron{
+			display:flex;
+			justify-content:space-between;
+			position:absolute;
+			top:0;
+			margin-top:20%;
+			z-index:1;	
+			
+		}
+		.col4 .img-col4 .chevron img{	
+			background:lightgray;
+			z-index:1;
+			margin-right:480px;
+			height:60px;
+		}
+		.col4 .img-col4 .play-icon{
+			position:absolute;
+			z-index:1;
+			top:0;
+			margin-top:20%;
+			margin-left:35%;
+		}
+		.col4 .img-col4 .play-icon img{
+			cursor:pointer;
+		}
+		.banner{
+			position: absolute;
+			left:0;
+			right:0;
+			width:1444x;
+			height:600px;
+			background-size: cover;
+		}
+		.banner img{
+			width:100%;
+			height:80%;
+			margin-bottom:30px;
+		}
+		.banner p{
+			padding-left:10px;
+			font-size:16px;
+		}
+
+		.banner .banner-subImg{	
+			display:flex;
+			justify-content:space-between;
+			margin-top:30px;
+			margin-left:150px;
+			margin-right:150px;
+		}
+		.banner .banner-subImg img{
+			height:150px;
+			width:250px;
+			border:1px solid gray;
+			padding:2px;
+		}
+		.info{
+			margin-top:1150px;
+			background:lightgray;
+			margin-left:80px;
+			margin-right:80px;
+			height:300px;
+		}
+		.info .row{
+			display:flex;
+			justify-content:space-between;
+			
+		}
+		.info .row .col{
+			flex-direction:column;
+			display:block;
+			padding:30px 10px 10px 10px;
+			align-items:center;
+		}
+		.info .row .col h3{
+			font-size:32px;
+			margin-bottom:15px;
+		}
+		.info .row .col p{
+			display:block;
+			width:230px;
+			height:80px;
+			line-height:30px;
+		}
+		.info .row .col a{
+			color:#57a9fc;
+			text-decoration:none;
+			cursor:pointer;
+		}
+		.info .row .col a:hover{
+			text-decoration:underline;
+		}
+		.info .row .col .line{
+			padding-top:100px;
+		}
+	.social{
+		position:relative;
+		width:100%;
+		height: 51px;
+		display:flex;
+		justify-content:flex-end;
+		gap:50px;
+		margin-left:-90px;
+		margin-top:80px;
+	}
+	.footer{
+		width:50%;
+		float:leftt
+	}
+	.footer .footer-link{
+		display:flex;
+		justify-content:space-around;
+	}
+	.footer .footer-link h4{
+		margin-bottom:20px;
+		font-size:24px;
+	}
+	.footer .footer-link ul li a{
+		line-height:40px;
+		text-decoration:none;
+		color:#2d3436;
+		font-size:16px;
+	}
+	.footer hr{
+		width:1270px;
+		margin-left:80px;
+		margin-right:80px;
+		margin-top:30px;
+		margin-bottom:30px;
+	}
+	.footer-down ul{
+		display:flex;
+		width:1200px;
+		justify-content:space-around;
+		padding-left:40px;
+		margin-bottom:50px;
+	}
+	.footer-down ul li{
+		font-size:13px;
+	}
+	.footer-down ul li a{
+		text-decoration:none;
+		color:#2d3436;
+	}
+	</style>
+</head>
+
+<body>
+	<div class="colorfull-link"></div>
+	<div class="container-header">
+	<section class="header">	
+		<div class="col1">
+			<div class="logo">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Bosch_logo.png" alt="">
+</div>
+		</div>
+		<div class="col2">
+			<span>Domací spotřebiče</span>
+		</div>
+	</section>
+	<section class="menu">
+		<div class="col1">
+			<div class="nav-links">
+				<ul>
+					<li><a href="#"><img width="23" height="23" src="https://img.icons8.com/ios/50/menu--v7.png" alt="menu--v7"/></a></li>
+					<li><a href="#">Produkty</a></li>
+					<li><a href="#">Servis</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">MyBosch</a></li>
+					<li><a href="#">Akce a novinky</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="col2" style="display:flex;justify-content:flex-end;margin-right:19px">
+			<div class="icons">
+				<img width="23" height="23" src="https://img.icons8.com/windows/32/gender-neutral-user.png" alt="gender-neutral-user"/>
+				<img width="23" height="23" src="https://img.icons8.com/ios/50/search--v1.png" alt="search--v1"/>
+			</div>
+		</div>
+	</section>
+	
+</div>
+<section class="submenu">
+	<ul>
+		<li><a href="#"><img width="23" height="23" src="https://img.icons8.com/external-inkubators-detailed-outline-inkubators/25/external-left-chevron-arrows-inkubators-detailed-outline-inkubators-2.png" alt="external-left-chevron-arrows-inkubators-detailed-outline-inkubators-2"/></a></li>
+		<li><a href="#">Blog Bosch</a></li>
+		<li><a href="#">Domácnost bez plýtvání</a></li>
+		<li><a href="#">Plánování kuchyně</a></li>
+		<li><a href="#"><img width="23" height="23" src="https://img.icons8.com/external-inkubators-detailed-outline-inkubators/25/external-right-chevron-arrows-inkubators-detailed-outline-inkubators-2.png" alt="external-right-chevron-arrows-inkubators-detailed-outline-inkubators-2"/></a></li>
+	</ul>
+</section>
+<div class="product">
+	<div class="web-map">
+		<ul>
+			<li style="margin-right:5px;"><img width="14" height="14" src="https://img.icons8.com/ios/50/home--v1.png" alt="home--v1"/></li>
+			<li> > </li>
+			<li> Akce a novinky</li>
+			<li> > </li>
+			<li> Pečící trouby Serie 8</li>
+		</ul>
+	</div>
+	<div class="product-detail">
+		<h1>Nové vestavné trouby Serie I 8.</h1>
+		<button class="feedback-btn">
+			<span class="text">Zpětná vazba</span>
+		</button>
+	</div>
+	<div class="banner-video">
+		<iframe width="100%" height="350" src="https://www.youtube.com/embed/poN_zMzmddg?si=TKDfyuZOb_ebBfRN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+	</div>
+	<div class="product-text">
+		<h2>Vařte zdravě #LikeABosch.</h2>
+		<p>Zdravý životní styl je stále důležitější. Proto je dobré mít kuchyň, která vám pomůže vařit zdravě. Ať už dáváte přednost vaření v páře, pečení nebo zapékání, nová prémiová trouba Bosch Serie 8 pokrývá všechny dovednosti vaření - od tradičních receptů až po programy řízené umělou inteligencí. Objevte inovativního pomocníka s úžasným designem, který si poradí se všemi výzvami při pečení i vaření. Vařte zdravě #LikeABosch.</p>
+	</div>
+</div>
+<div class="row">
+	<div class="col3">
+		<div class="col3-text">
+			<h2>Pochlubte se svým jídlem.</h2>
+			<span >Display</span>
+			<p>Inovativní uživatelské rozhraní usnadňuje používání více než kdy jindy. Otočením digitálního ovládacího prstence vyrytého do skla snadno nastavíte jakékoli nastavení trouby. Kromě toho je vám k dispozici dotykový TFT Touch Display s vysokým rozlišením: jasné, živé obrázky a informativní texty vás při navigaci v nastaveních provedou každým krokem. Pro ty, kteří mají rádi obzvlášť vynikající přehled, jsme navrhli zvětšený dotykový TFT Touch Display Plus a 6,8palcový dotykový TFT Touch Display Pro.</p>
+			<a href="#">Zobrazit všechny vestavné trouby Serie I 8. >
+			</a>
+		</div>
+	</div>
+	<div class="col4">
+	
+		<div class="img-col4">
+			<img src="https://media3.bosch-home.com/Images/450x/20858439_20757898_F1_3_2_AV1_toh_2400x1350px.webp" alt="">
+			<div class="sub-img">
+				<img src="https://media3.bosch-home.com/Images/450x/20858439_20757898_F1_3_2_AV1_toh_2400x1350px.webp" alt="">
+				<img src="https://media3.bosch-home.com/Images/600x/20858438_20757894_F1_2_2_AV2_toh_2400x1350px.jpg" alt="">
+				<img src="https://media3.bosch-home.com/Images/1600x/20858437_20757886_F1_1_1_Premium_Start_master_3200x1800px.webp" alt="">
+			</div>
+			<div class="chevron">
+				<img width="32" height="32" src="https://img.icons8.com/external-inkubators-detailed-outline-inkubators/25/external-left-chevron-arrows-inkubators-detailed-outline-inkubators-2.png" alt="external-left-chevron-arrows-inkubators-detailed-outline-inkubators-2" class="chevron-left"/>
+				<img width="32" height="32" src="https://img.icons8.com/external-inkubators-detailed-outline-inkubators/25/external-right-chevron-arrows-inkubators-detailed-outline-inkubators-2.png" alt="external-right-chevron-arrows-inkubators-detailed-outline-inkubators-2" class="chevron-right"/>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col4">
+		<div class="img-col4">
+			<img width="680" height="382" src="https://media3.bosch-home.com/Images/600x/20858440_20757938_F4_1_Steam_Plus_Premium_Milieu_master_1200x675px.jpg" alt="">
+		</div>
+	</div>
+	<div class="col3">
+		<div class="col3-text">
+			<h2>Rozpalte troubu a vychutnejte si jídlo!</h2>
+			<span >Funkce vaření v páře Steam Plus.</span>
+			<p>Jídlo připravené v páře si zachová nejen plnou, přirozenou chuť, ale také většinu vitamínů a živin. A protože nová funkce vaření v páře Steam Plus připravuje jídlo při teplotě až 120 °C, vaří se rychleji a zachovává si ještě více vitamínů a živin.</p>
+			<a href="#">Zobrazit všechny vestavné trouby Serie I 8  >
+			</a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col3">
+		<div class="col3-text">
+			<h2>Smažte zdravě!</h2>
+			<span >Funkce AirFry.</span>
+			<p>
+				Co byste řekli na hranolky z čerstvé zeleniny? Jednoduše položte tenké plátky brambor nebo jiné zeleniny na plech pro smažení a grilování na vzduchu, přidejte trochu oleje a zvolte funkci AirFry.</p>
+			<a href="#">Zobrazit všechny vestavné trouby Serie I 8. >
+			</a>
+		</div>
+	</div>
+	<div class="col4">
+	
+		<div class="img-col4">
+			<img src="https://media3.bosch-home.com/Images/600x/20858431_20748281_2022_bsh_eox6021_m_5_3_1_v007_ECIRGBV2_8Bit_GZD_1200x675px.jpg" alt="">
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col4">
+		<div class="img-col4">
+			<img width="680" height="382" src="https://media3.bosch-home.com/Images/600x/20858442_20757964_F4_3_3b_PerfectBake_Plus_Worktop_1200x675px.jpg" alt="">
+		</div>
+	</div>
+	<div class="col3">
+		<div class="col3-text">
+			<h2>Snadné pečení koláčů.</h2>
+			<span >PerfectBake Plus.</span>
+			<p>Pečení nebylo nikdy jednodušší: senzor PerfectBake Plus měří vlhkost uvnitř trouby a automaticky upravuje dobu pečení. Stačí vybrat pokrm a stisknout tlačítko Start. To nejlepší: díky umělé inteligenci dokonce vidíte, kolik minut zbývá do konce pečení pokrmu.</p>
+			<a href="#">Zobrazit všechny vestavné trouby Serie I 8  >
+			</a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col3">
+		<div class="col3-text">
+			<h2>Pečicí trouba to ví nejlépe.</h2>
+			<span >Asistent v pečicí troubě.</span>
+			<p>
+				Stává se vám, že si nejste jisti, který program je vhodný pro kterou potravinu? Zeptejte se asistenta trouby. Připojte troubu ke svému registrovanému účtu Home Connect a jednoduše jí pomocí aplikace Home Connect nebo hlasového ovládání řekněte, jaký pokrm chcete uvařit. Vestavná trouba vám pak navrhne vhodná nastavení nebo programy a přepne přímo na váš výběr - mimořádně užitečná funkce. Chcete-li použít asistenta pro pečení, jednoduše připojte troubu k registrovanému účtu Home Connect.</p>
+			<a href="#">Zobrazit všechny vestavné trouby Serie I 8.  >
+			</a>
+		</div>
+	</div>
+	<div class="col4">
+	
+		<div class="img-col4">
+			<img src="https://media3.bosch-home.com/Images/600x/20858443_20759486_2022_bsh_eox6021_m_5_1_1_v013_ECIRGBV2_8Bit_GZD_1200x675px.jpg" alt="">
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col4">
+		<div class="img-col4">
+			<img width="680" height="382" src="https://media3.bosch-home.com/Images/1200x/20905627_Bosch_PCG_Series_8_CTM_Design_1200x675.webp" alt="">
+			<div class="play-icon">
+				<img width="100" height="100" src="https://img.icons8.com/ios/100/000000/circled-play--v1.png" alt="circled-play--v1"/>
+			</div>
+		</div>
+		
+	</div>
+	<div class="col3">
+		<div class="col3-text">
+			<h2>Skutečné umění v kuchyni.</h2>
+			<span >Design.</span>
+			<p>Objevte čistý design, který dokonale zapadá do prostředí kuchyně. Přední strana z tmavého skla, hliníková rukojeť a digitální ovládací kroužek vyrytý do skleněného panelu. Pro naprosto snadné používání je tato řada vybavena také brilantním dotykovým TFT Touch Displejem s jasným textem a obrázky, které umožňují snadnou navigaci pro různá nastavení. Stiskněte tlačítko play a seznamte se s nejdůležitějšími funkcemi vestavných trub Serie I 8.</p>
+			<a href="#">Zobrazit všechny vestavné trouby Serie I 8 >
+			</a>
+		</div>
+	</div>
+</div>
+<div class="banner">
+	<div class="banner-img">
+		<img src="https://media3.bosch-home.com/Images/600x/20858435_20757857_I1_1_a_Darkline_Linie_3er_master_3200x1800px.jpg" alt="">
+	</div>
+	<p>Vypadá dobře, vaří dobře. Shoda v kulinářském nebi. Pečicí trouba Serie I 8 má úžasný, dokonalý design, který dokonale zapadne do prostředí vaší kuchyně</p>
+	<div class="banner-subImg">
+		<img src="https://media3.bosch-home.com/Images/600x/20858435_20757857_I1_1_a_Darkline_Linie_3er_master_3200x1800px.jpg" alt="">
+		<img src="https://media3.bosch-home.com/Images/900x/20858436_20757868_I3_1_Darkline_Linie_1er_master_3200x1800px.webp" alt="">
+		<img src="https://media3.bosch-home.com/Images/600x/20858437_20757886_F1_1_1_Premium_Start_master_3200x1800px.jpg" alt="">
+		<img src="https://media3.bosch-home.com/Images/600x/20858444_20757928_F3_2_1_Detail_Premium_Blende_Steam_Function_Plus_master_3200x1800px.jpg" alt="">
+	</div>
+</div>
+<div class="info">
+	<div class="row">
+		<div class="col">
+			<h3>Brand Experience Center</h3>
+			<p style="margin-bottom:30px;">Navštivte naše zážitkové předváděcí centrum a vyzkoušejte si spotřebiče Bosch naživo.</p>
+			<a  href="#">Více zde </a>
+		</div>
+		<div class="col">
+			<h3>Vaše přímá linka k nám</h3>
+			<a href="#">&#128222; +49 89 4590-3641</a>
+			<p class="line"><a href="#">Zákaznický servis Bosch > </a></p>
+		</div>
+		<div class="col">
+			<h3>Zažijte Bosch</h3>
+			<p>Zažijte kvalitu, preciznost a spolehlivost.</p>
+			<a href="#">Zde ></a>
+		</div>
+		<div class="col">
+			<h3>Vyhledat prodejce</h3>
+			<p>Vyhledat prodejce ve svém okolí.</p>
+			<a href="#">Vyhledat > </a>
+		</div>
+	</div>
+	
+</div>
+<div class="social">
+	<img width="24" height="24" src="https://img.icons8.com/ios-filled/50/youtube-play.png" alt="youtube-play"/>
+	<img width="24" height="24" src="https://img.icons8.com/ios-filled/50/facebook-f.png" alt="facebook-f"/>
+	<img width="24" height="24" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1"/>
+</div>
+<div class="footer">
+	<div class="footer-link">
+		<div class="col">
+			<h4>Servis</h4>
+			<ul>
+				<li><a href="#">Zákaznická podpora</a></li>
+				<li><a href="#">Opravy spotřebičů</a></li>
+				<li><a href="#">Kontakty</a></li>
+			</ul>
+		</div>
+		<div class="col">
+			<h4>Zažijte Bosch</h4>
+			<ul>
+				<li><a href="#">Historie</a></li>
+				<li><a href="#">Ocenění</a></li>
+			</ul>
+		</div>
+	</div>
+	<hr>
+	<div class="footer-down">
+		<ul>
+			<li>© BSH domácí spotřebiče, s.r.o.</li>
+			<li><a href="#">Imprint</a></li>
+			<li><a href="#">Právní informace</a></li>
+			<li><a href="#">Ochrana osobních údajů</a></li>
+			<li><a href="#">Záruční podmínky</a></li>
+			<li><a href="#">Nahlásit chybu v zabezpečení</a></li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
